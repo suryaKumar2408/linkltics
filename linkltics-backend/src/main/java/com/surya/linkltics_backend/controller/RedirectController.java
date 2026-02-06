@@ -16,8 +16,8 @@ public class RedirectController {
 
     private UrlMappingService urlMappingService ;
 
-    @GetMapping("/{shortUrl}")
-    public ResponseEntity<Void> redirect(@PathVariable String shortUrl) {
+    @GetMapping("/r/{shortUrl}")
+    public ResponseEntity<Void> redirect( @PathVariable("shortUrl") String shortUrl) {
         UrlMapping urlMapping = urlMappingService.getOriginalUrl(shortUrl);
         if (urlMapping != null) {
             HttpHeaders httpHeaders = new HttpHeaders();
