@@ -35,14 +35,16 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
             },
           });
 
-          const shortenUrl = `${import.meta.env.VITE_REACT_FRONT_END_URL + "/s/" + `${res.shortUrl}`}`;
-          navigator.clipboard.writeText(shortenUrl).then(() => {
-            toast.success("Short URL Copied to Clipboard", {
-                position: "bottom-center",
-                className: "mb-5",
-                duration: 3000,
-            });
-          });
+          const shortenUrl = `${import.meta.env.VITE_BACKEND_URL}/r/${res.shortUrl}`;
+
+navigator.clipboard.writeText(shortenUrl).then(() => {
+  toast.success("Short URL Copied to Clipboard", {
+    position: "bottom-center",
+    className: "mb-5",
+    duration: 3000,
+  });
+});
+
 
           // await refetch();
           reset();
@@ -83,7 +85,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
 
         <button
           className="bg-customRed font-semibold text-white w-32  bg-custom-gradient  py-2  transition-colors  rounded-md my-3"
-          type="text"
+          type="submit"
         >
           {loading ? "Loading..." : "Create"}
         </button>
